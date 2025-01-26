@@ -27,7 +27,7 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ### Dashboard
 <img src="https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png" alt="Image" width="50%" height="50%">
 
-**1. Identify peak purchasing days to plan marketing efforts:
+**1. Identify peak purchasing days to plan marketing efforts:**
 
 ````sql
 SELECT
@@ -37,76 +37,78 @@ FROM
 	coffee_sales.sales
 GROUP BY
 	day_of_week
+ORDER BY 
+	num_purchase desc
+LIMIT 3
 
 ````
 
 #### Answer:
 | day_of_week | num_purchase |
 | ----------- | ----------- |
-| sunday           | 359          |
+| tuesday           | 432          |
 | monday           | 383          |
-| tuesday           | 365          |
-| wednesday           | 336          |
 | thursday           | 374          |
-| friday           | 432          |
-| saturday           | 374          |
 
-- Customer A spent $76.
-- Customer B spent $74.
-- Customer C spent $36.
+- On Tuesdays, 432 coffes were sold. 
+- On Mondays, 383 coffes were sold. 
+- On Thursdays, 374 coffes were sold. 
 
 ***
 
-**2. How many days has each customer visited the restaurant?**
+**2. What is the most popular coffee?**
 
 ````sql
-SELECT 
-	customer_id,
-	COUNT(DISTINCT order_date) AS num_visited
-FROM 
-	sales
-GROUP BY
-	customer_id;
-````
-
-#### Answer:
-| customer_id | visit_count |
-| ----------- | ----------- |
-| A           | 4           |
-| B           | 6           |
-| C           | 2           |
-
-- Customer A vistied 4 times.
-- Customer B visited 6 times.
-- Customer C visited 2 times.
-
-***
-
-**3. What was the first item from the menu purchased by each customer?**
-
-````sql
-SELECT 
-	s.customer_id,
-	s.order_date,
-	m.product_name
+SELECT
+	coffee_name,
+	COUNT(*)
 FROM
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
-WHERE 
-	s.order_date = '2021-01-01'
+	coffee_sales.sales
+GROUP BY 
+	coffee_name
 ORDER BY
-	s.customer_id;
+	COUNT(*) DESC
+LIMIT 1
+
 ````
 
 #### Answer:
-| customer_id | order_date  | product_name | 
-| ----------- | ----------- | ------------ |
-| A           | 2021-01-01  | sushi        |
-| A           | 2021-01-01  | curry        |
-| B           | 2021-01-01  | curry        |
-| C	      | 2021-01-01  | ramen	   |
-| C	      | 2021-01-01  | ramen	   |
+| coffee_name | count |
+| ----------- | ----------- |
+| Americano with Milk           | 621           |
+
+
+- Americano with Milk is the most popular coffee with 621 purchases
+
+***
+
+**3. Analyze total sales trend over time**
+
+````sql
+SELECT 
+	EXTRACT(MONTH FROM date) AS num_month,
+	SUM(money) AS total_sales_in_Ukrainian hryvnias
+FROM 
+	coffee_sales.sales
+GROUP BY 
+	num_month
+ORDER BY 
+	num_month
+````
+
+#### Answer:
+| num_month | total_sales_in_Ukrainian_hryvnias  |  
+| ----------- | ----------- | 
+| 3           | 7050.20  |        
+| 4           | 6720.56  |         
+| 5           | 9063.42  |         
+| 6	      | 7758.76  | 	   
+| 7	      | 6915.91  | 	   
+| 8           | 7613.84  |        
+| 9           | 9988.64  |         
+| 10           | 13891.16  |         
+| 11	      | 8590.54  | 	   
+| 12	      | 6053.04 | 
 
 - Customer A first order was sushi and curry.
 - Customer B first order was curry.
