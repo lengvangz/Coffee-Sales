@@ -1,6 +1,5 @@
 # ☕️ Coffee Sales
-<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="1000" height="520">
-<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="100%" height="100%">
+<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="75%" height="75%">
 
 
 
