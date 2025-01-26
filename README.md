@@ -25,7 +25,7 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ## 🏃 Action 
 
 ### Dashboard
-https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png
+[image](https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png)
 
 **1. What is the total amount each customer spent at the restaurant?**
 
