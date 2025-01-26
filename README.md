@@ -25,9 +25,9 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ## 🏃 Action 
 
 ### Dashboard
-[Dashboard Link](https://public.tableau.com/app/profile/leng.vang/viz/coffeesales_17369660569190/Dashboard1#1)
 
 [<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png" alt="Image" width="50%" height="50%">](https://public.tableau.com/app/profile/leng.vang/viz/coffeesales_17369660569190/Dashboard1#1)
+click on image for the interactive version
 
 **1. Identify peak purchasing days to plan marketing efforts:**
 
