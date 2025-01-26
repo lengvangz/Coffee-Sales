@@ -120,11 +120,11 @@ ORDER BY
 SELECT
 	EXTRACT(MONTH FROM date) AS num_month,
 	COUNT(CASE
-			WHEN cash_type = 'card' THEN 1
-		  END)AS num_card,
+		WHEN cash_type = 'card' THEN 1
+	      END)AS num_card,
 	COUNT(CASE
-			WHEN cash_type = 'cash' THEN 1
-		  END) AS num_cash
+		WHEN cash_type = 'cash' THEN 1
+	      END) AS num_cash
 FROM
 	coffee_sales.sales
 GROUP BY
@@ -185,11 +185,11 @@ LIMIT 7
 SELECT
 	coffee_name,
 	COUNT(CASE
-			WHEN cash_type = 'cash' THEN 1
-		  END) AS cash_count,
+		WHEN cash_type = 'cash' THEN 1
+	      END) AS cash_count,
 	COUNT(CASE
-			WHEN cash_type = 'card' THEN 1
-		  END) AS card_count
+		WHEN cash_type = 'card' THEN 1
+              END) AS card_count
 FROM
 	coffee_sales.sales
 GROUP BY
