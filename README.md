@@ -16,8 +16,6 @@ Yaroslav got married recently. A year into their marriage, his wife shared the e
 ## 📋 Task
 Yaroslav wants to analyze the data to answer some key questions about his business, including time series trends, sales predictions for the next day, week, and month, and customer purchase behaviors. 
 
-### Entity Relationship Diagram
-[image](https://github.com/lengvangz/images/blob/main/%232%20diagram.png)
 
 
 ***
@@ -25,6 +23,7 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ## 🏃 Action 
 
 ### Dashboard
+<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png" alt="Image" width="50%" height="50%">](https://github.com/lengvangz/images/blob/main/coffee%20sales.png)
 ![image](https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png)
 
 **1. What is the total amount each customer spent at the restaurant?**
