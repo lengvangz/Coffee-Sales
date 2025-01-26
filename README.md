@@ -1,5 +1,5 @@
 # ☕️ Coffee Sales
-[<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="500" height="520">](https://github.com/lengvangz/images/blob/main/coffee%20sales.png)
+[<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="1000" height="520">](https://github.com/lengvangz/images/blob/main/coffee%20sales.png)
 
 ## 📖 Table of Contents
 - [Situation](#Situation)
