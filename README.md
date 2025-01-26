@@ -207,102 +207,39 @@ ORDER BY
 
 ***
 
-**7. Which item was purchased just before the customer became a member?**
-
-````sql
-SELECT 
-	s.customer_id,
-	s.order_date,
-	m.product_name
-FROM 
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
-INNER JOIN members mem
-	ON s.customer_id = mem.customer_id
-WHERE 
-	s.order_date < join_date
-ORDER BY
-	s.customer_id , order_date desc;
-````
-
-#### Answer:
-| customer_id | order_date  | product_name | 
-| ----------- | ----------- | ------------ |
-| A           | 2021-01-01  | sushi        |
-| A           | 2021-01-01  | curry        |
-| B	      | 2021-01-04  | sushi	   |
-| B	      | 2021-01-02  | curry	   |
-| B	      | 2021-02-01  | curry	   |
-
-- The item Customer A purchased before becoming a member was sushi and curry.
-- The item Customer B purchased before becoming a member was sushi.
-
-***
-
-**8. What is the total items and amount spent for each member before they became a member**
+**7. Identify times of day with the highest sales volume: **
 
 ````sql
 SELECT
-	s.customer_id,
-	COUNT(s.product_id) AS num_items,
-	SUM(m.price) AS total_amount_spent
-FROM 
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
-INNER JOIN members mem
-	ON s.customer_id = mem.customer_id
-WHERE 
-	order_date < join_date
+	EXTRACT(HOUR FROM datetime) AS purchase_hour,
+	COUNT(*) AS num_purchase
+FROM
+	coffee_sales.sales
 GROUP BY
-	s.customer_id
-ORDER BY
-	s.customer_id;
+	purchase_hour
+ORDER BY 
+	purchase_hour
 ````
 
 #### Answer:
-| customer_id | num_items | total_amount_spent | 
-| ----------- | --------- | ------------------ |
-| A           | 2         | 25                 |
-| B           | 3         | 40                 |
-
-
-- Customer A purchased a total of 2 items, spending $25 in total.
-- Customer B purchased a total of 3 items, spending $40 in total.
-
-***
-
-**9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?**
-
-````sql
-SELECT
-	s.customer_id,
-	SUM(CASE
-		WHEN m.product_name = 'sushi' THEN price*20
-		ELSE mprice*10
-	END) AS total_points
-FROM 
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
-GROUP BY 
-	s.customer_id
-ORDER BY
-	s.customer_id;
-````
-
-#### Answer:
-| customer_id | total_point |  
+| purchase_hour | num_purchase |  
 | ----------- | ----------- | 
-| A           | 860         | 
-| B           | 940         |
-| C           | 360         | 
-
-
-- Customer A would have 860 points.
-- Customer B would have 941 points.
-- Customer C would have 360 points.
+| 7           | 65         | 
+| 8           | 174         |
+| 9           | 169         | 
+| 10           | 261         | 
+| 11           | 227         |
+| 12           | 191         | 
+| 13           | 163         | 
+| 14           | 153         |
+| 15           | 146         | 
+| 16           | 181         | 
+| 17           | 147         |
+| 18           | 157         | 
+| 19           | 173         | 
+| 20           | 139         |
+| 21          | 178         | 
+| 22           | 99         | 
 
 ***
 
