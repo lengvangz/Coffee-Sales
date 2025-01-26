@@ -1,5 +1,8 @@
 # ☕️ Coffee Sales
-<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="1000" height="520">](https://github.com/lengvangz/images/blob/main/coffee%20sales.png)
+<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="1000" height="520">
+<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales.png" alt="Image" width="100%" height="100%">
+
+
 
 ## 📖 Table of Contents
 - [Situation](#Situation)
@@ -23,8 +26,7 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ## 🏃 Action 
 
 ### Dashboard
-<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png" alt="Image" width="50%" height="50%">](https://github.com/lengvangz/images/blob/main/coffee%20sales.png)
-![image](https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png)
+<img src="https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png" alt="Image" width="50%" height="50%">
 
 **1. What is the total amount each customer spent at the restaurant?**
 
