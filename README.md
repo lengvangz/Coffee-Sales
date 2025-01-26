@@ -27,28 +27,29 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ### Dashboard
 <img src="https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png" alt="Image" width="50%" height="50%">
 
-**1. What is the total amount each customer spent at the restaurant?**
+**1. Identify peak purchasing days to plan marketing efforts:
 
 ````sql
-SELECT 
-	s.customer_id,
-	SUM(m.price) AS total_amount_spent
-FROM 
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
-GROUP BY 
-	s.customer_id
-ORDER BY 
-	s.customer_id;
+SELECT
+	TO_CHAR(date, 'day') AS day_of_week,
+	COUNT(*) AS num_purchase
+FROM
+	coffee_sales.sales
+GROUP BY
+	day_of_week
+
 ````
 
 #### Answer:
-| customer_id | total_sales |
+| day_of_week | num_purchase |
 | ----------- | ----------- |
-| A           | 76          |
-| B           | 74          |
-| C           | 36          |
+| sunday           | 359          |
+| monday           | 383          |
+| tuesday           | 365          |
+| wednesday           | 336          |
+| thursday           | 374          |
+| friday           | 432          |
+| saturday           | 374          |
 
 - Customer A spent $76.
 - Customer B spent $74.
