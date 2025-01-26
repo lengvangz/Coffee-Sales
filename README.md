@@ -77,9 +77,6 @@ LIMIT 1
 | ----------- | ----------- |
 | Americano with Milk           | 621           |
 
-
-- Americano with Milk is the most popular coffee with 621 purchases
-
 ***
 
 **3. Analyze total sales trend over time**
@@ -87,7 +84,7 @@ LIMIT 1
 ````sql
 SELECT 
 	EXTRACT(MONTH FROM date) AS num_month,
-	SUM(money) AS total_sales_in_Ukrainian hryvnias
+	SUM(money) AS total_sales_in_Ukrainian_hryvnias
 FROM 
 	coffee_sales.sales
 GROUP BY 
@@ -110,104 +107,103 @@ ORDER BY
 | 11	      | 8590.54  | 	   
 | 12	      | 6053.04 | 
 
-- Customer A first order was sushi and curry.
-- Customer B first order was curry.
-- Customer C first order was ramen.
-
 ***
 
-**4. What is the most purchased item on the menu and how many times was it purchased by all customers?**
-
-````sql
-SELECT 
-	m.product_name,
-	COUNT(s.product_id) AS num_purchased
-FROM 
-	menu m 
-INNER JOIN sales s 
-	ON m.product_id = s.product_id
-GROUP BY 
-	m.product_name
-ORDER BY 
-	num_purchased DESC
-LIMIT 1;
-````
-
-#### Answer:
-| product_name | num_purchased |
-| ------------ | ------------- | 
-| ramen        | 8             | 
-
-
-- The most popular item on the menu is ramen, which was ordered 8 times.
-
-***
-
-**5. Which item was the most popular for each customer?**
+**4. Determine cash vs. card preference by date**
 
 ````sql
 SELECT
-	s.customer_id,
-	m.product_name,
-	COUNT(s.product_id) AS num_purchase
-FROM 
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
+	EXTRACT(MONTH FROM date) AS num_month,
+	COUNT(CASE
+			WHEN cash_type = 'card' THEN 1
+		  END)AS num_card,
+	COUNT(CASE
+			WHEN cash_type = 'cash' THEN 1
+		  END) AS num_cash
+FROM
+	coffee_sales.sales
 GROUP BY
-	s.customer_id, m.product_name
+	num_month
 ORDER BY
-	s.customer_id ASC, num_purchase DESC;
+	num_month
 ````
 
 #### Answer:
-| customer_id | product_name  | num_purchase | 
+| num_month | num_card  | num_cash | 
 | ----------- | ------------- | ------------ |
-| A           | ramen  	      | 3            |
-| A           | curry         | 2            |
-| A           | sushi         | 1            |
-| B	      | sushi         | 2	     |
-| B	      | curry         | 2	     |
-| B	      | ramen         | 2	     |
-| C	      | ramen         | 3	     |
-
-- Customer A most popular item was ramen.
-- Customer B most popular item was both sushi and curry.
-- Customer C most popular item was ramen.
+| 3           | 175  	      | 31            |
+| 4           | 168         | 28            |
+| 5           | 241         | 26            |
+| 6	      | 223         | 4	     |
+| 7	      | 237         | 0	     |
+| 8	      | 272         | 0	     |
+| 9	      | 344         | 0	     |
+| 10	      | 426         | 0	     |
+| 11	      | 259         | 0	     |
+| 12	      | 189         | 0	     |
 
 ***
 
-**6. Which item was purchased first by the customer after they became a member?**
+**5. What are the top 7 customer's card number and what are their total sales?**
 
 ````sql
-SELECT 
-	s.customer_id,
-	s.order_date,
-	m.product_name
+SELECT
+	card,
+	SUM(money) AS total_sales_in_Ukrainian_hryvnias
 FROM 
-	sales s
-INNER JOIN menu m
-	ON s.product_id = m.product_id
-INNER JOIN members mem
-	ON s.customer_id = mem.customer_id
-WHERE 
-	s.order_date > join_date
-ORDER BY
-	s.customer_id , order_date;
+	coffee_sales.sales
+WHERE
+	card IS NOT NULL
+GROUP BY
+	card
+ORDER BY 
+	total_sales_in_Ukrainian_hryvnias DESC
+LIMIT 7
 ````
 
 #### Answer:
-| customer_id | order_date  | product_name | 
-| ----------- | ----------- | ------------ |
-| A           | 2021-01-10  | ramen        |
-| A           | 2021-01-11  | ramen        |
-| A	      | 2021-01-11  | ramen	   |
-| B	      | 2021-01-11  | sushi	   |
-| B	      | 2021-01-16  | ramen	   |
-| B	      | 2021-02-01  | ramen	   |
+| customer_id | product_name  |  
+| ----------- | ------------- |  
+| ANON-0000-0000-0012           | 3584.60  	      |
+| ANON-0000-0000-0012           | 2343.98         |
+| ANON-0000-0000-0012           | 2314.82         |
+| ANON-0000-0000-0012	      | 1810.94         |
+| ANON-0000-0000-0012	      | 1519.48         |
+| ANON-0000-0000-0012	      | 1406.34         |
+| ANON-0000-0000-0012	      | 1368.18         | 
 
-- The first item Customer A purchased after becoming a member was ramen.
-- The first item Customer B purchased after becoming a member was sushi.
+***
+
+**6. Find correlations between coffee type and payment method:**
+
+````sql
+SELECT
+	coffee_name,
+	COUNT(CASE
+			WHEN cash_type = 'cash' THEN 1
+		  END) AS cash_count,
+	COUNT(CASE
+			WHEN cash_type = 'card' THEN 1
+		  END) AS card_count
+FROM
+	coffee_sales.sales
+GROUP BY
+	coffee_name
+ORDER BY
+	coffee_name
+````
+
+#### Answer:
+| coffee_name | cash_count  | card_count | 
+| ----------- | ----------- | ------------ |
+| Americano           | 14  | 313        |
+| Americano with Milk           | 15 | 606        |
+| Cappuccino	      | 15 | 353	   |
+| Cocoa	      | 4 | 135	   |
+| Cortado	      | 5  | 242	   |
+| Espresso	      | 5  | 92	   |
+| Hot Chocolate	      | 6  | 200	   |
+| Lattee	      | 25  | 593	   |
 
 ***
 
