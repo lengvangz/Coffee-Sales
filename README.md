@@ -25,7 +25,7 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 ## 🏃 Action 
 
 ### Dashboard
-![Dashboard](https://github.com/lengvangz/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/Case%20Study%20%231.sql)](https://github.com/lengvangz/images/blob/main/coffee%20sales%20dashboard.png)
+![Dashboard](https://github.com/lengvangz/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231%20-%20Danny's%20Diner/Case%20Study%20%231.sql)
 
 **1. What is the total amount each customer spent at the restaurant?**
 
