@@ -7,8 +7,8 @@
 - [Situation](#Situation)
 - [Task](#Task)
 - [Actions](#Actions)
-	-[Dashboard](#Dashboard)
-  	-[SQL](#SQL) 	
+	- [Dashboard](#Dashboard)
+	- [SQL](#SQL) 	
 
 ***
 
