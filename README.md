@@ -7,6 +7,8 @@
 - [Situation](#Situation)
 - [Task](#Task)
 - [Actions](#Actions)
+	-[Dashboard](#Dashboard)
+  	-[SQL](#SQL) 	
 
 ***
 
@@ -18,11 +20,9 @@ Yaroslav got married recently. A year into their marriage, his wife shared the e
 ## Task
 Yaroslav wants to analyze the data to answer some key questions about his business, including time series trends, sales predictions for the next day, week, and month, and customer purchase behaviors. 
 
-
-
 ***
 
-## Action 
+## Actions 
 
 ### Dashboard
 
@@ -30,7 +30,7 @@ Yaroslav wants to analyze the data to answer some key questions about his busine
 
 click on image for the interactive version
 
-# SQL 
+### SQL 
 
 **1. Identify peak purchasing days to plan marketing efforts:**
 
