@@ -10,19 +10,19 @@
 
 ***
 
-## Situation ‼️
+## Situation 
 Yaroslav got married recently. A year into their marriage, his wife shared the exciting news that she was pregnant. Motivated by this, Yaroslav decided to invest in a coffee vending machine as a source of income. He also began collecting data to help maximize his earnings.
 
 ***
 
-## 📋 Task
+## Task
 Yaroslav wants to analyze the data to answer some key questions about his business, including time series trends, sales predictions for the next day, week, and month, and customer purchase behaviors. 
 
 
 
 ***
 
-## Action 🏃
+## Action 
 
 ### Dashboard
 
