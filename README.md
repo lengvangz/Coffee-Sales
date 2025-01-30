@@ -55,10 +55,6 @@ LIMIT 3
 | monday           | 383          |
 | thursday           | 374          |
 
-- On Tuesdays, 432 coffes were sold. 
-- On Mondays, 383 coffes were sold. 
-- On Thursdays, 374 coffes were sold. 
-
 ***
 
 **2. What is the most popular coffee?**
